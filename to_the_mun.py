@@ -1,5 +1,6 @@
 import krpc
 
+
 def transfer_to_mun():
     conn = krpc.connect(name="Mun Transfer")
     sc = conn.space_center
@@ -35,6 +36,7 @@ def transfer_to_mun():
 
     print("Transfer to Mun complete!")
     conn.close()
+
 
 if __name__ == "__main__":
     transfer_to_mun()
