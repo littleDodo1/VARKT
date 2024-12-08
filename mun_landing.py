@@ -13,11 +13,13 @@ ap = vessel.auto_pilot
 ap.sas = True
 ap.sas_mode = ap.sas_mode.retrograde
 
+
 def burn_to_speed(target_speed, throttle):
     """Reduces speed to the target speed."""
     while orb_speed() > target_speed:
         vessel.control.throttle = throttle
     vessel.control.throttle = 0.0
+
 
 print("Deorbiting from lunar orbit...")
 while 5000 < altitude() < 7000:
