@@ -1,6 +1,7 @@
 import krpc
 import time
 
+
 def launch_to_orbit():
     conn = krpc.connect(name="Orbit Ascent")
     sc = conn.space_center
@@ -50,6 +51,7 @@ def launch_to_orbit():
 
     print("Orbit achieved!")
     conn.close()
+
 
 if __name__ == "__main__":
     launch_to_orbit()
