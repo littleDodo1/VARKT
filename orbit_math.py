@@ -16,7 +16,7 @@ beta = 12900
 m0 = 2970000
 T = 300
 
-t_eval = np.linspace(1, 161, 1000)
+t_eval = np.linspace(1, 160, 1000)
 
 
 def equations(t, y):
@@ -35,7 +35,7 @@ def equations(t, y):
 
 y0 = [0, 0, 1, 90]
 
-solution = solve_ivp(equations, [1, 161], y0, t_eval=t_eval)
+solution = solve_ivp(equations, [1, 160], y0, t_eval=t_eval)
 
 vx = solution.y[0]
 vy = solution.y[1]
