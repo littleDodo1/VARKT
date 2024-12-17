@@ -9,7 +9,6 @@ p0 = 101000  # Атмосферное давление у земли (Па)
 M = 0.029  # Молярная масса воздуха (кг/моль)
 R = 8.31  # Газовая постоянная (Дж/(моль·К))
 alpha_target = np.radians(90)  # Целевой угол в радианах
-alphaf = np.radians(0.1)
 t_max = 160  # Время достижения целевого угла (с)
 S = 80.1  # Площадь поперечного сечения (м²)
 Cf = 0.4
@@ -28,15 +27,12 @@ def equations(t, y):
     v = np.sqrt(vx**2 + vy**2)
     rho = ((p0 * M) / (R * T)) * np.exp(-((M * g) / (R * T)) * h)
     drag = (Cf * rho * S * v ** 2) / 2
-
-    # Уравнения движения
     dvx_dt = (F_thrust * np.cos(alpha) - (drag * np.cos(alpha))) / m
     dvy_dt = (F_thrust * np.sin(alpha) - (drag * np.sin(alpha)) - m * g) / m
 
     return [dvx_dt, dvy_dt, vy, alpha]
 
 
-# Начальные условия
 y0 = [0, 0, 1, 90]
 
 solution = solve_ivp(equations, [1, 161], y0, t_eval=t_eval)
@@ -49,7 +45,6 @@ t = solution.t
 
 alpha_deg = np.degrees(solution.y[3])
 
-# Чтение данных из файла
 time_file = []
 height_file = []
 speed_file = []
